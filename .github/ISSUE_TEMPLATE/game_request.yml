@@ -1,0 +1,32 @@
+name: Game Request
+description: Request support for a new racing game
+title: "[Game] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Request a new game to be added to the auto-detection list.
+        Tip: open Task Manager while the game is running to find the exact process name.
+  - type: input
+    id: game_name
+    attributes:
+      label: Game name
+      placeholder: e.g. Gran Turismo 7
+    validations:
+      required: true
+  - type: input
+    id: process_name
+    attributes:
+      label: Process name (.exe)
+      description: The exact filename visible in Task Manager while the game runs
+      placeholder: e.g. GT7.exe
+    validations:
+      required: false
+  - type: input
+    id: crewchief_enum
+    attributes:
+      label: CrewChief game ID (if known)
+      description: The game identifier shown in CrewChief's game selector dropdown
+    validations:
+      required: false
