@@ -1,0 +1,82 @@
+name: Bug Report
+description: Something is not working as expected
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill in as much detail as possible.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is going wrong?
+      placeholder: Describe the problem...
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Start game X
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: dropdown
+    id: game
+    attributes:
+      label: Affected game (optional)
+      options:
+        - iRacing
+        - Le Mans Ultimate
+        - Assetto Corsa (Content Manager)
+        - Assetto Corsa Competizione
+        - Automobilista 2
+        - rFactor 2
+        - RaceRoom Racing Experience
+        - DiRT Rally 2.0
+        - F1 24
+        - F1 23
+        - F1 22
+        - F1 2021
+        - F1 2020
+        - F1 2019
+        - F1 2018
+        - GTR2
+        - Richard Burns Rally
+        - Project CARS 2
+        - Project CARS 3
+        - Other / Unknown
+    validations:
+      required: false
+  - type: dropdown
+    id: windows
+    attributes:
+      label: Windows version (optional)
+      options:
+        - Windows 11
+        - Windows 10
+    validations:
+      required: false
+  - type: textarea
+    id: log
+    attributes:
+      label: Log file (optional)
+      description: Paste the contents of %LOCALAPPDATA%\CrewChiefAutoLauncher\launcher.log
+      render: text
+    validations:
+      required: false
