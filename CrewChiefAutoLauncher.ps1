@@ -8,6 +8,14 @@
 
 $ErrorActionPreference = "SilentlyContinue"
 
+# Verberg console-venster via Win32 API (betrouwbaarder dan -WindowStyle Hidden bij opstart)
+Add-Type -Name ConsoleHelper -Namespace Native -MemberDefinition @'
+    [DllImport("kernel32.dll")] public static extern IntPtr GetConsoleWindow();
+    [DllImport("user32.dll")]   public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+'@
+$hwnd = [Native.ConsoleHelper]::GetConsoleWindow()
+if ($hwnd -ne [IntPtr]::Zero) { [Native.ConsoleHelper]::ShowWindow($hwnd, 0) | Out-Null }
+
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 [System.Windows.Forms.Application]::EnableVisualStyles()
