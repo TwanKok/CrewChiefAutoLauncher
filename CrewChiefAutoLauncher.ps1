@@ -49,8 +49,6 @@ $GameMap = [ordered]@{
     "Content Manager"           = "ASSETTO_64BIT"
     "acs"                       = "ASSETTO_64BIT"
 
-    # Assetto Corsa EVO
-    "AssettoCorsaEVO"           = "ASSETTO_EVO"
 
     # Automobilista 2
     "AMS2AVX"                   = "AMS2"
