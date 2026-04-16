@@ -55,8 +55,7 @@ Menu options:
 | iRacing | `iRacingSim64DX11`, `iRacingSim64` |
 | Le Mans Ultimate | `Le Mans Ultimate`, `LMU`, `LeMansCentral` |
 | Assetto Corsa Competizione | `AC2-Win64-Shipping` |
-| Assetto Corsa (+ Content Manager) | `AssettoCorsa`, `Content Manager`, `acs` |
-| Assetto Corsa EVO | `AssettoCorsaEVO` |
+| Assetto Corsa (+ Content Manager) | `AssettoCorsa`, `Content Manager`|
 | Automobilista 2 | `AMS2AVX`, `AMS2` |
 | rFactor 2 | `rFactor2` |
 | Project CARS 2 | `pCARS2` |
