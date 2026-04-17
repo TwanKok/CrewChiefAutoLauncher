@@ -36,7 +36,7 @@ The launcher clicks "Start Crew Chief" for you automatically. For this to work c
 
 If "Run immediately" is enabled, CrewChief will try to start itself at the same time as the launcher - causing a conflict where CrewChief stops immediately after starting.
 
-**How to disable it:**
+** How to disable it:**
 1. Open CrewChief
 2. Click **Properties** (top-right)
 3. Search for **"Run immediately"** using the search box (Ctrl+E), or scroll to find it
