@@ -30,7 +30,7 @@ A grey **CC** icon will appear in your system tray to confirm it's running.
 > `-ExecutionPolicy Bypass`. This is standard practice for unsigned scripts and only affects
 > this specific script - it does not change your system-wide PowerShell policy.
 
-## âš ï¸ Required CrewChief setting
+##Required CrewChief setting
 
 The launcher clicks "Start Crew Chief" for you automatically. For this to work correctly, CrewChief's built-in **"Run immediately"** option must be **disabled**.
 
@@ -43,7 +43,7 @@ If "Run immediately" is enabled, CrewChief will try to start itself at the same 
 4. Make sure the checkbox is **unchecked**
 5. Click **Save profile settings and restart**
 
-| âŒ This causes issues | âœ… This is correct |
+| This causes issues | This is correct |
 |---|---|
 | ![Run immediately enabled](images/run-immediately-on.png) | ![Run immediately disabled](images/run-immediately-off.png) |
 
