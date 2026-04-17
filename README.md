@@ -1,13 +1,13 @@
 # CrewChief Auto-Launcher
 
-Automatically launches [CrewChief](https://thecrewchief.org/) with the correct game selected as soon as you start a supported racing game — and closes it again when you're done. Runs silently in the background with a system tray icon showing its current status.
+Automatically launches [CrewChief](https://thecrewchief.org/) with the correct game selected as soon as you start a supported racing game - and closes it again when you're done. Runs silently in the background with a system tray icon showing its current status.
 
 ## Features
 
 - Detects 20+ racing games automatically
 - Selects the correct game in CrewChief and clicks "Start Crew Chief" for you
 - Closes CrewChief when you exit the game (with a configurable grace period)
-- Starts automatically with Windows — completely hidden, no console window
+- Starts automatically with Windows - completely hidden, no console window
 - System tray icon shows current status (grey = idle, orange = starting, green = active)
 - Supports Content Manager for Assetto Corsa (does not restart CC when switching cars)
 
@@ -22,17 +22,34 @@ Automatically launches [CrewChief](https://thecrewchief.org/) with the correct g
 
 1. Download and extract the ZIP to any folder (e.g. `Downloads`)
 2. Double-click **`Install.bat`**
-3. That's it — the launcher starts immediately and will auto-start on every Windows login
+3. That's it - the launcher starts immediately and will auto-start on every Windows login
 
 A grey **CC** icon will appear in your system tray to confirm it's running.
 
 > **Security note:** The installer registers a PowerShell script to run at startup using
 > `-ExecutionPolicy Bypass`. This is standard practice for unsigned scripts and only affects
-> this specific script — it does not change your system-wide PowerShell policy.
+> this specific script - it does not change your system-wide PowerShell policy.
+
+## âš ï¸ Required CrewChief setting
+
+The launcher clicks "Start Crew Chief" for you automatically. For this to work correctly, CrewChief's built-in **"Run immediately"** option must be **disabled**.
+
+If "Run immediately" is enabled, CrewChief will try to start itself at the same time as the launcher - causing a conflict where CrewChief stops immediately after starting.
+
+**How to disable it:**
+1. Open CrewChief
+2. Click **Properties** (top-right)
+3. Search for **"Run immediately"** using the search box (Ctrl+E), or scroll to find it
+4. Make sure the checkbox is **unchecked**
+5. Click **Save profile settings and restart**
+
+| âŒ This causes issues | âœ… This is correct |
+|---|---|
+| ![Run immediately enabled](images/run-immediately-on.png) | ![Run immediately disabled](images/run-immediately-off.png) |
 
 ## Uninstallation
 
-Double-click **`Uninstall.bat`** — this removes the startup entry and stops the running launcher.
+Double-click **`Uninstall.bat`** - this removes the startup entry and stops the running launcher.
 
 ## Tray icon
 
@@ -40,13 +57,13 @@ Right-click the **CC** icon in the system tray for options:
 
 | Icon color | Meaning |
 |------------|---------|
-| Grey | Idle — waiting for a game to start |
+| Grey | Idle - waiting for a game to start |
 | Orange | Launching CrewChief |
 | Green | CrewChief is active and listening |
 
 Menu options:
-- **Open logbestand** — opens the log file in Notepad for troubleshooting
-- **Launcher stoppen** — stops the launcher (does not uninstall)
+- **Open logbestand** - opens the log file in Notepad for troubleshooting
+- **Launcher stoppen** - stops the launcher (does not uninstall)
 
 ## Supported games
 
@@ -63,14 +80,14 @@ Menu options:
 | Project CARS (original) | `pCARS64`, `pCARS` |
 | RaceRoom Racing Experience | `RRRE64`, `RRRE` |
 | DiRT Rally | `dirtrally` |
-| F1 2018–2024 | `F1_18` through `F1_24` |
+| F1 2018-2024 | `F1_18` through `F1_24` |
 | GTR2 | `GTR2` |
 | Richard Burns Rally | `RichardBurnsRally_SSE` |
 | rFactor / Automobilista 1 | `rFactor` |
 
 ## Adding a game yourself
 
-Open `CrewChiefAutoLauncher.ps1` in Notepad (or any text editor) and find the `$GameMap` section near the top — it looks like this:
+Open `CrewChiefAutoLauncher.ps1` in Notepad (or any text editor) and find the `$GameMap` section near the top - it looks like this:
 
 ```powershell
 $GameMap = [ordered]@{
@@ -88,8 +105,8 @@ This is the name of the game's `.exe` file **without** the `.exe` extension.
 
 **How to find it:**
 1. Start the game
-2. Open Task Manager (`Ctrl+Shift+Esc`) → **Details** tab
-3. Look for the game process — the name in the **Name** column without `.exe` is what you need
+2. Open Task Manager (`Ctrl+Shift+Esc`) â†’ **Details** tab
+3. Look for the game process - the name in the **Name** column without `.exe` is what you need
 
 *Example: if you see `MyRacingGame.exe`, the process name is `MyRacingGame`*
 
@@ -145,7 +162,7 @@ $GameMap = [ordered]@{
 ```
 
 Save the file, then restart the launcher:
-1. Right-click the **CC** tray icon → **Launcher stoppen**
+1. Right-click the **CC** tray icon â†’ **Launcher stoppen**
 2. Double-click `Install.bat` (or run the VBS in your Startup folder)
 
 ## Configuration
@@ -165,12 +182,15 @@ $GracePeriod   = 15     # Seconds to wait after game closes before stopping CC
 - Check the log file at `%LOCALAPPDATA%\CrewChiefAutoLauncher\launcher.log`
 
 **Game is not detected**
-- Verify the process name in Task Manager → Details tab
+- Verify the process name in Task Manager â†’ Details tab
 - Make sure the process name is spelled exactly right (case-sensitive) in `$GameMap`
 
+**CrewChief stops immediately after being started by the launcher**
+- Disable the **"Run immediately"** option in CrewChief's Properties (see [Required CrewChief setting](#ï¸-required-crewchief-setting) above)
+
 **CrewChief doesn't start listening automatically**
-- Check the log for `[CLICK]` entries — this shows what `ClickStart.ps1` found
-- If CC opens but the button isn't clicked, CC may be loading slowly — the script waits up to 70 seconds total
+- Check the log for `[CLICK]` entries - this shows what `ClickStart.ps1` found
+- If CC opens but the button isn't clicked, CC may be loading slowly - the script waits up to 70 seconds total
 
 **CrewChief is installed in a different location**
 - Update the `$CrewChiefExe` path at the top of `CrewChiefAutoLauncher.ps1`
@@ -181,4 +201,4 @@ The log is at `%LOCALAPPDATA%\CrewChiefAutoLauncher\launcher.log` and can be ope
 
 ## License
 
-MIT — free to use, modify, and share.
+MIT - free to use, modify, and share.
