@@ -107,10 +107,20 @@ while ((Get-Date) -lt $btnDeadline) {
 if ($btn -eq [IntPtr]::Zero) {
     $cur = [CCClick]::GetStartStopText($proc.MainWindowHandle)
     if ($cur -like "*Stop*") {
-        Log "CC is al gestart ('$cur') - niets te doen"
+        Log "CC is al gestart ('$cur') - enkel minimaliseren"
+        [CCClick]::MinimizeWindow($proc.MainWindowHandle)
     } else {
         Log "Start-knop niet gevonden na wachten (huidig: '$cur')"
     }
+    exit 0
+}
+
+# Controleer nogmaals of CC al gestart is (bijv. door 'Start immediately' instelling)
+# Race condition: FindButton vond "Start Crew Chief", maar ondertussen is CC al auto-gestart
+$currentText = [CCClick]::GetStartStopText($proc.MainWindowHandle)
+if ($currentText -like "*Stop*") {
+    Log "CC al gestart voor klik ('$currentText') - enkel minimaliseren"
+    [CCClick]::MinimizeWindow($proc.MainWindowHandle)
     exit 0
 }
 
